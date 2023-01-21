@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+article h1 {
+    @apply text-4xl font-page-head text-ichthus-blue mt-4 mb-4;
+}
+article h2 {
+    @apply text-3xl font-page-head text-ichthus-blue mt-4 mb-4;
+}
+article h3 {
+    @apply text-2xl font-page-head text-ichthus-blue mt-4 mb-4;
+}
+article h4 {
+    @apply text-xl font-page-head text-ichthus-blue mt-4 mb-4;
+}
+article h5 {
+    @apply text-lg font-page-head text-ichthus-blue mt-4 mb-4;
+}
+
+article blockquote {
+    @apply text-3xl text-rose-800 m-10 italic;
+
+}
+article hr {
+    @apply m-10;
+}
