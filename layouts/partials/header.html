@@ -1,31 +1,36 @@
-<nav class="">
+<nav class="" x-data="{ open: false }">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="/" class="flex items-center">
             <img src="https://www.ichthusutrecht.nl/images/icons/ichthus-logo-red.png" class="h-6 mr-3 sm:h-9"
                 alt="Ichthus Logo">
-            <span class="self-center text-xl font-semibold whitespace-nowrap">
+            <span class="self-center text-xl font-semibold whitespace-nowrap ">
                 Ichthus Utrecht
             </span>
         </a>
-        <button data-collapse-toggle="navbar-default" type="button"
-            class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-default" aria-expanded="false">
+        <button id="navbar-toggle" x-on:click="open = !open" x-bind:class="{ 'open': open }" type="button"
+            class="md:invisible inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-expanded="false">
             <span class="sr-only">Open main menu</span>
-            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                    clip-rule="evenodd"></path>
+            <!-- Icon when menu is closed. -->
+            <svg class="block h-6 w-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <!-- Icon when menu is open. -->
+            <svg class="hidden cross h-6 w-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
+
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="flex flex-row -p4 mt-4 rounded">
                 {{ $currentPage := . }}
                 {{ range .Site.Menus.main }}
                 {{ if .HasChildren }}
-                <li class="{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
+                <li class="{{ if $currentPage.HasMenuCurrent " main" . }}active{{ end }}" x-data="{ open: false }">
                     <!-- Drop down button -->
-                    <button
+                    <button x-on:click="open = !open" 
                         class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
                         {{ .Pre }} <span>{{ .Name }}</span>
                         <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -36,10 +41,10 @@
                         </svg>
                     </button>
                     <!-- Child items -->
-                    <div class="z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                    <div class="z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44" x-show="open">
                         <ul class="sub-menu">
                             {{ range .Children }}
-                            <li class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                            <li class="{{ if $currentPage.IsMenuCurrent " main" . }}active{{ end }}">
                                 <a href="{{ .URL }}" class="py-2 pl-3 pr-4 text-gray-700 rounded">{{ .Name }}</a>
                             </li>
                             {{ end }}
@@ -47,7 +52,7 @@
                     </div>
                 </li>
                 {{ else }}
-                <li class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                <li class="{{ if $currentPage.IsMenuCurrent " main" . }}active{{ end }}">
                     <a href="{{ .URL }}" class="py-2 pl-3 pr-4 text-gray-700 rounded">
                         {{ .Pre }} <span>{{ .Name }}</span>
                     </a>

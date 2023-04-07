@@ -2,27 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-
-article h1 {
-    @apply text-4xl font-page-head text-ichthus-blue mt-4 mb-4;
-}
-article h2 {
-    @apply text-3xl font-page-head text-ichthus-blue mt-4 mb-4;
-}
-article h3 {
-    @apply text-2xl font-page-head text-ichthus-blue mt-4 mb-4;
-}
-article h4 {
-    @apply text-xl font-page-head text-ichthus-blue mt-4 mb-4;
-}
-article h5 {
-    @apply text-lg font-page-head text-ichthus-blue mt-4 mb-4;
+#navbar-toggle .block {
+    transition: opacity 0.2s ease-in-out;
 }
 
-article blockquote {
-    @apply text-3xl text-rose-800 m-10 italic;
-
+#navbar-toggle .hidden {
+    transition: opacity 0.2s ease-in-out;
 }
-article hr {
-    @apply m-10;
+
+#navbar-toggle.open .block {
+    opacity: 0;
+}
+
+#navbar-toggle.open .hidden {
+    opacity: 1;
+}
+
+#navbar-toggle .cross {
+    display: none;
+}
+
+#navbar-toggle.open .block {
+    display: none;
+}
+
+#navbar-toggle.open .cross {
+    display: block;
 }

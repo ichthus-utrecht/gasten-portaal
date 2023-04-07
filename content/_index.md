@@ -10,3 +10,5 @@ Test
 
 Meer tests.
 Maar Hoe werkt het?
+
+{{< newsupdates >}}

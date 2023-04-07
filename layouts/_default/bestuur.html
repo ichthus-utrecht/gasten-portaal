@@ -1,7 +1,8 @@
 {{ define "main" }}
 <header class="h-[55vh] bg-cover bg-[url('https://www.ichthusutrecht.nl/images/nav.jpg')] flex flex-col justify-end">
     <div class="container mx-auto relative b-0 pb-8 ">
-        <h1 class="font-page-head text-5xl md:text-7xl text-white" style="text-shadow: #000 0 0 10px">{{ upper .Title }}
+        <h1 class="font-page-head text-5xl md:text-7xl text-white" style="text-shadow: #000 0 0 10px">
+            {{ upper .Title }}
         </h1>
     </div>
 </header>
@@ -10,10 +11,10 @@
     <p>{{ . }}</p>
 </div>
 {{ end }}
-<main class="container px-6 mx-auto mb-16  text-gray-700 justify-self-center sm:px-4 md:px-0 ">
+<main class="px-6 w-full mb-16  text-gray-700 justify-self-center sm:px-4 md:px-0 ">
+
     <hr>
-    <div
-        class="mt-4 mx-auto prose lg:prose-lg prose-h1:text-ichthus-blue prose-h1:font-normal prose-h1:font-page-head ">
+    <div class="mt-4 mx-auto">
         {{ .Content }}
     </div>
 
