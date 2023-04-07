@@ -1,7 +1,7 @@
 ---
 title: "Marlies van Hoffen"
 subtitle: "Praeses"
-mail: fiscus@ichthusutrecht.nl
+mail: praeses@ichthusutrecht.nl
 facebook: https://nl-nl.facebook.com/csvichthusutrecht
 instagram: https://www.instagram.com/ichthus_utrecht/
 image: /bestuur/bestuur-person-1.jpg
