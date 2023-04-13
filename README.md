@@ -68,6 +68,7 @@ Oh, dit is een shortcode waarmee je de bestuurleden kunt laten zien:
 ## Hoe ontwikkel ik?
 
 1. Installeer [gohugo](gohugo.io) of gebruik de devcontainer in VSCode.
+2. Draai `npm i` om de javascript dependencies te installeren met behulp van [npm](https://www.npmjs.com/).
 2. Draai `hugo server` om de site te draaien op `localhost:1313`.
 
 Vanaf hier kun je de site aanpassen en zien hoe het eruit ziet.

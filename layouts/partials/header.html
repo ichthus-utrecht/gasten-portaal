@@ -1,65 +1,131 @@
-<nav class="" x-data="{ open: false }">
-    <div class="container flex flex-wrap items-center justify-between mx-auto">
-        <a href="/" class="flex items-center">
-            <img src="https://www.ichthusutrecht.nl/images/icons/ichthus-logo-red.png" class="h-6 mr-3 sm:h-9"
-                alt="Ichthus Logo">
-            <span class="self-center text-xl font-semibold whitespace-nowrap ">
-                Ichthus Utrecht
-            </span>
-        </a>
-        <button id="navbar-toggle" x-on:click="open = !open" x-bind:class="{ 'open': open }" type="button"
-            class="md:invisible inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-            aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <!-- Icon when menu is closed. -->
-            <svg class="block h-6 w-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-            <!-- Icon when menu is open. -->
-            <svg class="hidden cross h-6 w-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
+<nav x-data="{ open: false, navTransparent: true }" x-init="() => {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 10) {
+            navTransparent = false;
+          } else {
+            navTransparent = true;
+          }
+        });
+      }"
+    :class="{ 'bg-white': !navTransparent, 'backdrop-blur-md': navTransparent, 'h-16': !navTransparent, 'h-20': navTransparent}"
+    class="fixed top-0 w-full z-10 transition-all duration-300 backdrop-blur-md shadow-md">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <!-- Display the Ichthus Utrecht logo -->
+            <div class="flex items-center">
+                <a href="/" class="flex items-center">
+                    <img src="https://www.ichthusutrecht.nl/images/icons/ichthus-logo-red.png" class="h-6 mr-3 sm:h-9"
+                        alt="Ichthus Logo">
+                    <span class="self-center text-xl font-semibold whitespace-nowrap ">
+                        Ichthus Utrecht
+                    </span>
+                </a>
+            </div>
+            <!-- Display the navigation menu -->
+            <div class="hidden md:block">
+                <div class="flex items-baseline space-x-4">
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.main }}
+                    {{ if .HasChildren }}
+                    <div x-data="{ expanded: false }">
 
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="flex flex-row -p4 mt-4 rounded">
-                {{ $currentPage := . }}
-                {{ range .Site.Menus.main }}
-                {{ if .HasChildren }}
-                <li class="{{ if $currentPage.HasMenuCurrent " main" . }}active{{ end }}" x-data="{ open: false }">
-                    <!-- Drop down button -->
-                    <button x-on:click="open = !open" 
-                        class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
-                        {{ .Pre }} <span>{{ .Name }}</span>
-                        <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <!-- Child items -->
-                    <div class="z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44" x-show="open">
-                        <ul class="sub-menu">
+                        <button @click="expanded = !expanded"
+                            class="flex items-center text-gray-700 hover:text-gray-800 focus:outline-none">
+                            <span>{{ .Pre }}{{ .Name }}</span>
+                            <svg class="w-5 h-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path x-show="!expanded"
+                                    d="M10 12a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 9.586l2.293-2.293a1 1 0 011.414 0 .997.997 0 010 1.414l-3 3A1 1 0 0110 12z" />
+                                <path x-show="expanded"
+                                    d="M10 8a1 1 0 01.707-.293l3 3a1 1 0 01-1.414 1.414L10 10.414l-2.293 2.293a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 8z" />
+                            </svg>
+                        </button>
+                        <div x-show="expanded" class="absolute mt-2 py-2 bg-white rounded-md shadow-lg w-48"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-100"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95">
                             {{ range .Children }}
-                            <li class="{{ if $currentPage.IsMenuCurrent " main" . }}active{{ end }}">
-                                <a href="{{ .URL }}" class="py-2 pl-3 pr-4 text-gray-700 rounded">{{ .Name }}</a>
-                            </li>
+                            {{ if $currentPage.IsMenuCurrent "main" . }}
+                            <a href="{{ .URL }}"
+                                class="text-gray-700 bg-gray-200 block px-4 py-2 text-sm hover:bg-gray-100">
+                                {{ .Name }}</a>
+                            {{else}}
+                            <a href="{{ .URL }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100">
+                                {{ .Name }}</a>
+                            {{end}}
+
+
                             {{ end }}
-                        </ul>
+                        </div>
+
                     </div>
-                </li>
-                {{ else }}
-                <li class="{{ if $currentPage.IsMenuCurrent " main" . }}active{{ end }}">
-                    <a href="{{ .URL }}" class="py-2 pl-3 pr-4 text-gray-700 rounded">
-                        {{ .Pre }} <span>{{ .Name }}</span>
-                    </a>
-                </li>
-                {{ end }}
-                {{ end }}
-            </ul>
+                    {{else}}
+                    <a href="{{ .URL }}" class="text-gray-700 hover:text-gray-800">{{ .Pre }}{{ .Name }}</a>
+                    {{end}}
+                    {{ end }}
+
+                </div>
+            </div>
+            <div class="-mr-2 flex md:hidden">
+                <button @click="open = !open"
+                    class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                    <span x-show="!open" class="sr-only">Open main menu</span>
+                    <svg x-show="!open" class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <span x-show="open" class="sr-only">Close main menu</span>
+                    <svg x-show="open" class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div x-show="open" class="md:hidden z-50 bg-white p-3">
+        <div class="pt-2 pb-3 space-y-1">
+            {{ range .Site.Menus.main }}
+            {{ if .HasChildren }}
+            <div x-data="{ expanded: false }">
+
+                <button @click="expanded = !expanded"
+                    class="flex items-center block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-800 hover:bg-gray-100">
+                    <span>{{ .Pre }}{{ .Name }}</span>
+                    <svg class="w-5 h-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path x-show="!expanded"
+                            d="M10 12a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 9.586l2.293-2.293a1 1 0 011.414 0 .997.997 0 010 1.414l-3 3A1 1 0 0110 12z" />
+                        <path x-show="expanded"
+                            d="M10 8a1 1 0 01.707-.293l3 3a1 1 0 01-1.414 1.414L10 10.414l-2.293 2.293a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 8z" />
+                    </svg>
+                </button>
+                <div x-show="expanded" class="mt-2 py-2 bg-white rounded-md shadow-lg w-full"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="transform opacity-0 scale-95"
+                    x-transition:enter-end="transform opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-100"
+                    x-transition:leave-start="transform opacity-100 scale-100"
+                    x-transition:leave-end="transform opacity-0 scale-95">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 1</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 2</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 3</a>
+                </div>
+
+            </div>
+
+            {{else}}
+            <a href="{{ .URL }}"
+                class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-800 hover:bg-gray-100">
+                {{ .Pre }}{{ .Name }}
+            </a>
+            {{end}}
+            {{ end }}
         </div>
     </div>
 </nav>

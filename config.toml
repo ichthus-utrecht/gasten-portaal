@@ -35,7 +35,7 @@ title = 'Ichthus Utrecht'
 [[menu.main]]
   identifier = 'login'
   name = 'Login'
-  url = 'https://www.ichthusutrecht.nl/portal/login'
+  url = 'https://www.ichthusutrecht.nl/login'
   title = 'Andere zaken over Ichthus'  
   weight = 6
 
