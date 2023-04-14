@@ -6,7 +6,7 @@ description: De normen en waardes waar wij als Ichthus voor staan.
 menu:
   main:    
     parent: "vereniging"
-    weight: 1
+    weight: 3
 ---
 
  Onze identiteit als christenen wordt bepaald door God: Hij heeft ons gemaakt voor Zijn doel. Jezus Christus is volmaakt en zo heeft God ons ook bedoeld. Hieruit volgt het hoofddoel van onze vereniging:

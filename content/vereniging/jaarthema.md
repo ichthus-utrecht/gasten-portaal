@@ -6,7 +6,7 @@ description: Het jaar thema
 menu:
   main:    
     parent: "vereniging"
-    weight: 1
+    weight: 2
 ---
 
 Dit jaar hebben wij gekozen voor het jaarthema ‘aanstekelijk’. In het licht van de betekenis van dit woord als ‘gemakkelijk op anderen overgaand’ en ‘navolging opwekkend’, hopen wij met onze liefde en passie voor Ichthus, Ichthianen aan te steken met hetzelfde enthousiasme bij Ichthus te zijn. Zo hopen we een actief jaar te hebben met mooie kringen, gezellige maaltijden, volle commissies en veel bezochte activiteiten. Door dit alles heen hopen we ook het vuur voor God aanstekelijk te laten zijn en zo ‘navolging opwekkend’ Jezus te volgen en op hem te gaan lijken, zoals onze hoofddoelstelling luidt.

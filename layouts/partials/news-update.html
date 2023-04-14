@@ -1,0 +1,19 @@
+<div class="bg-white shadow-md rounded-md overflow-hidden">
+    <!-- Display an image if the newsupdate has an image -->
+    {{ with .Params.image }}
+
+    <img class="w-full h-48 object-cover" src="{{ . }}" alt="{{ . }}">
+    {{ end }}
+    <div class="p-6">
+        <h2 class="text-2xl font-bold mb-2">
+            <a href="{{ .RelPermalink }}" class="text-ichthus-blue hover:text-blue-800 transition">{{ .Title }}</a>
+        </h2>
+        <div class="prose prose-lg">
+            {{ .Summary }}
+        </div>
+        <!-- <p class="text-gray-600">{{ .Summary }}</p> -->
+        <div class="mt-4">
+            <a href="{{ .RelPermalink }}" class="text-ichthus-blue hover:text-blue-800">Lees meer &rarr;</a>
+        </div>
+    </div>
+</div>

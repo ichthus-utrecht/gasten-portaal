@@ -6,7 +6,7 @@ description: Het jaar thema
 menu:
   main:    
     parent: "activiteiten"
-    weight: 1
+    weight: 2
 ---
 
 # Kringen

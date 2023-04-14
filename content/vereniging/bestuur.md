@@ -7,7 +7,7 @@ layout: "bestuur"
 menu:
   main:    
     parent: "vereniging"
-    weight: 2
+    weight: 1
 ---
 
 {{< bestuur >}}

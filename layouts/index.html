@@ -1,7 +1,10 @@
 {{ define "main" }}
-  <main class="container">    
-    {{ with .Content }}
+<div class="h-24 md:h-48 "></div>
+<main class="container w-full">
+  {{ with .Content }}
+  <section class="prose prose-headings:text-ichthus-blue mx-auto">
     {{.}}
-    {{ end }}
-  </main>
+  </section>
+  {{ end }}
+</main>
 {{ end }}

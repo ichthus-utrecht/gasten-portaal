@@ -2,7 +2,6 @@
 
 {{ $image := resources.Get "/images/nav-hero.jpg" }}
 {{ $image := $image.Resize "2000x" }}
-
 <header class="h-[55vh] bg-cover flex flex-col justify-end" style="background: url('{{$image.RelPermalink}}');">
     <div class="container mx-auto relative b-0 pb-8 ">
         <h1 class="p-1 font-page-head text-5xl md:text-7xl text-white" style="text-shadow: #000 0 0 10px">{{ upper
@@ -10,6 +9,7 @@
         </h1>
     </div>
 </header>
+
 {{ with .Params.subtitle}}
 <div class="text-gray-500 italic mx-auto w-full text-center p-3 shadow">
     <p>{{ . }}</p>
