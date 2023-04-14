@@ -23,9 +23,11 @@
 </head>
 
 <body>
-    {{ partial "header.html" . }}
+    {{ partial "header/site-header.html" . }}
     {{ block "main" .}}
     {{ end }}
+
+    {{ partial "footer/site-footer.html" . }}
 </body>
 
 </html>

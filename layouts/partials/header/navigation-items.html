@@ -1,0 +1,41 @@
+{{ $currentPage := . }}
+<div x-data="{ expanded: -1 }" class="flex flex-col md:flex-row md:justify-center gap-3 align-middle">
+    {{ range $index, $element := .Site.Menus.main }}
+    {{ if .HasChildren }}
+    <div class="md:self-center self-start w-full">
+        <button class="flex items-center text-gray-700 hover:text-gray-800 focus:outline-none py-2"
+            @click="if (expanded === {{$index}}) { expanded = -1;} else {expanded = {{$index}}}">
+            <svg class="w-5 h-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path x-show="expanded !== {{$index}}"
+                    d="M10 12a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 9.586l2.293-2.293a1 1 0 011.414 0 .997.997 0 010 1.414l-3 3A1 1 0 0110 12z" />
+                <path x-show="expanded === {{$index}}"
+                    d="M10 8a1 1 0 01.707-.293l3 3a1 1 0 01-1.414 1.414L10 10.414l-2.293 2.293a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 8z" />
+            </svg>
+            <span>{{ .Pre }}{{ .Name }}</span>
+        </button>
+        <div x-show="expanded === {{ $index }}"
+            class="md:absolute w-full md:w-48 mt-2 py-2 bg-white md:rounded-md md:shadow-lg border-solid border-l-2 border-rose-800 shadow-inner"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="transform opacity-0 scale-95"
+            x-transition:enter-end="transform opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-100"
+            x-transition:leave-start="transform opacity-100 scale-100"
+            x-transition:leave-end="transform opacity-0 scale-95" style="display: none;">
+            {{ range .Children }}
+            {{ if $currentPage.IsMenuCurrent "main" . }}
+            <a href="{{ .URL }}" class="text-gray-700 bg-gray-200 block px-4 py-2 text-sm hover:bg-gray-100">
+                {{ .Name }}</a>
+            {{else}}
+            <a href="{{ .URL }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100">
+                {{ .Name }}</a>
+            {{end}}
+            {{ end }}
+        </div>
+    </div>
+    {{else}}
+    <a href="{{ .URL }}"
+        class="text-gray-700 hover:text-gray-800 md:self-center self-start flex items-center gap-3 {{ .Params.Class }}">{{
+        .Pre }}{{ .Name }} {{ .Post }}</a>
+    {{end}}
+    {{ end }}
+</div>
