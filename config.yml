@@ -19,11 +19,10 @@ menu:
       title: "Andere zaken over Ichthus"
       weight: 3
 
-      
     - identifier: "login"
       name: "Login"
       title: "Login"
-      url: "https://www.ichthusutrecht.nl/login"            
+      url: "https://www.ichthusutrecht.nl/login"
       weight: 6
       params:
         class: "bg-ichthus-red hover:bg-red-700 !text-white font-bold py-2 px-4 rounded w-24 !text-center ml-3"
@@ -41,3 +40,12 @@ menu:
     #   title: "Facebook"
     #   url: "https://www.facebook.com/csvichthusutrecht"
     #   weight: 50
+contact:
+  postadres:
+    name: C.S.V. Ichthus Utrecht, Pnyx
+    street: Winthontlaan 30C
+    postcode: 3526KV
+    city: Utrecht
+    email: abactis@ichthusutrecht.nl
+  adverteren:
+    name: ''

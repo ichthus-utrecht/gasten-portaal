@@ -6,6 +6,10 @@ menu:
   main:
     parent: "over"
     weight: 2
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
 ---
 
 Om de vereniging draaiende te houden zijn we naast het innen van contributie afhannkelijk van sponsorinkomsten en donateurs. Van uw donatie worden activiteiten zoals het verdiepingsweekend en start- en slotweekend betaald.
@@ -31,3 +35,5 @@ Bij vragen kunt u contact opnemen met vriendenvanichthus@ichthusutrecht.nl
 
 **Met hartelijke groet,**\
 Commissie Vrienden van Ichthus
+
+{{<vrienden_formulier>}}
