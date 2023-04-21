@@ -11,7 +11,7 @@ menu:
 
 ## Maaltijd
 
-Iedere week op woensdag is er een verenigingsavond in Denksportcentrum Dijckzigt (Boorstraat 107, Utrecht). We beginnen samen met een maaltijd om 18:00 uur. Deze maaltijd is toegankelijk voor iedereen en kent een laagdrempelig en gezellig karakter. De maaltijd wordt elke week gemiddeld door zo'n 80 tot 90 personen bezocht. Tijdens de maaltijd is er de mogelijkheid om een mededeling te doen om de vereniging op de hoogte te houden van activiteiten en andere belangrijke informatie.
+Iedere week op donderdag is er een verenigingsavond in Denksportcentrum Dijckzigt (Boorstraat 107, Utrecht). We beginnen samen met een maaltijd om 18:00 uur. Deze maaltijd is toegankelijk voor iedereen en kent een laagdrempelig en gezellig karakter. De maaltijd wordt elke week gemiddeld door zo'n 80 tot 90 personen bezocht. Tijdens de maaltijd is er de mogelijkheid om een mededeling te doen om de vereniging op de hoogte te houden van activiteiten en andere belangrijke informatie.
 
 ## Activiteiten op woensdagavond
 
