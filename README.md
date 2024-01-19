@@ -1,3 +1,5 @@
+Deze repository is gearchiveerd. Dit was een beginnetje aan een nieuwe gastenwebsite.
+
 # Ichthus Utrecht Gasten Portaal
 
 Dit is de source code van het gasten portaal van de Ichthus Utrecht website.
